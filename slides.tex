@@ -392,6 +392,35 @@
 	
 \end{frame}
 
+% ------------------------------------------------------------------------------
+\begin{frame}[label=aphylo-current]
+	\frametitle{Phylogenetics Modeling Strategies}
+	
+	\begin{minipage}[m]{.3\linewidth}
+		
+		\begin{figure}
+			\includegraphics[width=.9\linewidth]{phylo-model-overview-legend.pdf}
+		\end{figure}
+	\end{minipage}\hfill
+	\begin{minipage}[m]{.69\linewidth}
+		\mode<beamer>{
+			\begin{figure}
+				\phantom{\includegraphics<1>[width=.9\linewidth]{phylo-model-overview-1.pdf}}%
+				\includegraphics<2>[width=.9\linewidth]{phylo-model-overview-1.pdf}%
+				\includegraphics<3>[width=.9\linewidth]{phylo-model-overview-2.pdf}%
+				\includegraphics<4>[width=.9\linewidth]{phylo-model-overview.pdf}
+			\end{figure}
+		}
+		
+		\mode<handout>{
+			\begin{figure}
+				\includegraphics[width=.9\linewidth]{phylo-model-overview.pdf}
+			\end{figure}
+		}
+	\end{minipage}
+	
+\end{frame}
+
 % -------------------------------------------------------------------------------
 \begin{frame}
 	\frametitle{Computational features of \textbf{barry}}
@@ -441,34 +470,7 @@
 	\end{table}
 \end{frame}
 
-% ------------------------------------------------------------------------------
-\begin{frame}[label=aphylo-current]
-	\frametitle{Phylogenetics Modeling Strategies}
-	
-	\begin{minipage}[m]{.3\linewidth}
-		
-		\begin{figure}
-			\includegraphics[width=.9\linewidth]{phylo-model-overview-legend.pdf}
-		\end{figure}
-	\end{minipage}\hfill
-	\begin{minipage}[m]{.69\linewidth}
-		\mode<beamer>{
-			\begin{figure}
-				\phantom{\includegraphics<1>[width=.9\linewidth]{phylo-model-overview-1.pdf}}%
-				\includegraphics<2>[width=.9\linewidth]{phylo-model-overview-1.pdf}%
-				\includegraphics<3>[width=.9\linewidth]{phylo-model-overview-2.pdf}%
-				\includegraphics<4>[width=.9\linewidth]{phylo-model-overview.pdf}
-			\end{figure}
-		}
-		
-		\mode<handout>{
-			\begin{figure}
-				\includegraphics[width=.9\linewidth]{phylo-model-overview.pdf}
-			\end{figure}
-		}
-	\end{minipage}
-	
-\end{frame}
+
 
 % ------------------------------------------------------------------------------
 \begin{frame}[c,label=aphylo-ergm-example]
@@ -526,6 +528,20 @@
 \end{frame}
 
 
+%-------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Simulation Study}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.45\linewidth]{fig/aphylo-sim-study.pdf}
+	\caption{Distribution of parameter estimates from 5,000 annotated trees of size 99.
+		Parameter estimates were obtained using MCMC with Robust Adaptive
+		Metropolis and logistic prior with scale 2 and mean 0.
+	}
+\end{figure}
+
+\end{frame}
 %-------------------------------------------------------------------------------
 \begin{frame}
 	

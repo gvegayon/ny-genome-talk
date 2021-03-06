@@ -60,12 +60,12 @@
 % Noice!
 \usetheme{usckeck}
 
-\title[Stat. Comp. for Complex Systems]{%
-	Statistical and Computational Methods for Complex Systems
+\title[SNA Meets Phylogenetics]{%
+	Triads, Dyads, and Gene Functions\\When Social Network Analysis Meets Phylogenetics
 }
-\author[GGVY -- \href{vegayon@usc.edu}{vegayon@usc.edu}]{George G Vega Yon}
+\author[GGVY -- \href{vegayon@usc.edu}{vegayon@usc.edu}]{George G Vega Yon, Ph.D.}
 \institute[USC-PREVMED]{University of Southern California, Department of Preventive Medicine}
-\date{Universidad Adolfo Ibáñez\\December 10, 2020}
+\date{NY Genome Center\\December 10, 2020}
 
 % Some definitions
 \def\cursection{\frame{\frametitle{Contents}\tableofcontents[current]}}
@@ -176,9 +176,9 @@
 \begin{frame}[t]
 \usebeamertemplate{section intro}{}{}
 \textcolor{uscgold}{
-\Large {\bf Part 1: On the Prediction of Gene Functions Using Phylogenetic Trees} \vskip0.25em
+\Large {\bf Part 1: Bayesian parameter estimation for automatic annotation of gene functions using observational data and phylogenetic trees} \vskip0.25em
 \large \textit{Joint with}: Paul D Thomas, Paul Marjoram, Huaiyu Mi, Duncan Thomas, and John Morrison \\
-(\small Accepted at \textit{PLOS Computational Biology})
+(\small Published at \textit{PLOS Computational Biology})
 }
 \end{frame}
 
@@ -242,7 +242,7 @@
 	\end{itemize}
 	\end{minipage}
 \vfill \hfill
-\Large \uncover<7->{Only on 2020, 2,000+ COVID-19 papers using the GO \href{https://scholar.google.com/scholar?as\_ylo=2020\&q="gene+ontology"+(covid+OR+coronavirus)}{(Google Scholar)}}\normalsize\\
+\Large \uncover<7->{Only on 2021, 2,500+ Cancer papers using the GO \href{https://scholar.google.com/scholar?as\_ylo=2021\&q=\%22gene+ontology\%22+Cancer\&hl=en\&as_sdt=0,5}{(Google Scholar)}}\normalsize\\
 \hfill\hyperlink{go-functions-types}{\beamergotobutton{more}}
 
 \end{frame}
@@ -294,11 +294,11 @@
 		\centering
 		
 		\mode<beamer>{
-			\only<1>{\includegraphics[width=.9\linewidth, clip, trim={0 0 0 2cm}]{example-trees-good1-parts-1.pdf}}%
-			\only<2->{\includegraphics[width=.9\linewidth, clip, trim={0 0 0 2cm}]{example-trees-good1-parts-1b.pdf}}
+			\only<1>{\includegraphics[width=.85\linewidth, clip, trim={0 0 0 1.5cm}]{example-trees-good1-parts-1.pdf}}%
+			\only<2->{\includegraphics[width=.85\linewidth, clip, trim={0 0 0 1.5cm}]{example-trees-good1-parts-1b.pdf}}
 		}
 		\mode<handout>{
-			\includegraphics[width=.9\linewidth, clip, trim={0 0 0 2cm}]{example-trees-good1-parts-1b.pdf}
+			\includegraphics[width=.85\linewidth, clip, trim={0 0 0 1.5cm}]{example-trees-good1-parts-1b.pdf}
 		}
 	
 		
@@ -329,6 +329,7 @@
 	\end{minipage}
 \end{frame}
 
+% -------------------------------------------------------------------------------
 \begin{frame}[c,label=aphylo-results-brief]
 	\frametitle{Results: What does aphylo brings to the table?}
 	\begin{center}
@@ -336,34 +337,91 @@
 	\end{center}
 	
 	\uncover<1->{\begin{minipage}[t]{.24\linewidth}\centering
-		\shadowbox{Large scale}\\\small
-		Estimate \textbf{pooled-data models} involving
-		\textbf{hundreds of families}\\
-		(1,300 genes at a time)
+			\shadowbox{Large scale}\\\small
+			Estimate \textbf{pooled-data models} involving
+			\textbf{hundreds of families}\\
+			(1,300 genes at a time)
 	\end{minipage}}\hfill
 	\uncover<2->{\begin{minipage}[t]{.24\linewidth}\centering
-		\shadowbox{Interpretable}\\\small
-		Pooled-data model provides inference
-		\textbf{aligned with theoretical results}\\
-		(gene duplication is key)
+			\shadowbox{Interpretable}\\\small
+			Pooled-data model provides inference
+			\textbf{aligned with theoretical results}\\
+			(gene duplication is key)
 	\end{minipage}}\hfill
 	\uncover<3->{\begin{minipage}[t]{.24\linewidth}\centering
-		\shadowbox{Fast}\\\small
-		Computational efficiency
-		allows making \textbf{inference and prediction fast}\\
-		(1 second vs 2 hours)
+			\shadowbox{Fast}\\\small
+			Computational efficiency
+			allows making \textbf{inference and prediction fast}\\
+			(1 second vs 2 hours)
 	\end{minipage}}\hfill
 	\uncover<4->{\begin{minipage}[t]{.24\linewidth}\centering
-		\shadowbox{Accuracy}\\\small
-		Outperforms state-of-the-art
-		phylo-models\\
-		(0.72 vs 0.60 AUC)
+			\shadowbox{Accuracy}\\\small
+			Outperforms state-of-the-art
+			phylo-models\\
+			(0.72 vs 0.60 AUC)
 	\end{minipage}}
-\vfill\hfill\hyperlink{aphylo-results-overview}{\beamergotobutton{details}}
+	\vfill\hfill\hyperlink{aphylo-results-overview}{\beamergotobutton{details}}
 \end{frame}
 
+% ------------------------------------------------------------------------------
+\begin{frame}[label=aphylo-current]
+	\frametitle{Phylogenetics Modeling Strategies}
+	
+	\begin{minipage}[m]{.3\linewidth}
+		
+		\begin{figure}
+			\includegraphics[width=.9\linewidth]{phylo-model-overview-legend.pdf}
+		\end{figure}
+	\end{minipage}\hfill
+	\begin{minipage}[m]{.69\linewidth}
+		\mode<beamer>{
+			\begin{figure}
+				\phantom{\includegraphics<1>[width=.9\linewidth]{phylo-model-overview-1.pdf}}%
+				\includegraphics<2>[width=.9\linewidth]{phylo-model-overview-1.pdf}%
+				\includegraphics<3>[width=.9\linewidth]{phylo-model-overview-2.pdf}%
+				\includegraphics<4>[width=.9\linewidth]{phylo-model-overview.pdf}
+			\end{figure}
+		}
+		
+		\mode<handout>{
+			\begin{figure}
+				\includegraphics[width=.9\linewidth]{phylo-model-overview.pdf}
+			\end{figure}
+		}
+	\end{minipage}
+	
+\end{frame}
+
+% -------------------------------------------------------------------------------
 \begin{frame}
-	\def\fwidth{.5\linewidth}
+	\frametitle{Computational features of \textbf{barry}}
+	\begin{minipage}[m]{.55\linewidth}
+		\vspace{-1cm}\raggedleft\includegraphics[width=.35\linewidth]{barry-logo.png}\\\vspace{-.5cm}
+		\raggedright
+		\small
+		\shadowbox{Core}
+		\begin{itemize}
+			\item<2-> C++ header-only template library.
+			\item<3-> Arrays $\equiv$ sparse matrices, i.e., small and large.
+			\item<4-> Full enumeration and support of DEM.
+			\item<5-> Arbitrary constrains for enumeration.
+		\end{itemize}
+		\uncover<6->{\shadowbox{Modeling features}}
+		\begin{itemize}
+			\item<7-> Arbitrary Model terms (suff. stats).
+			\item<8-> Hashmap recycles support, i.e., pooled data models.
+		\end{itemize}
+	\end{minipage}\hfill
+	\begin{minipage}[m]{.44\linewidth}
+		\centering
+		\uncover<8->{\includegraphics[width=1\linewidth]{ergm-computing.pdf}}
+	\end{minipage}
+\end{frame}
+
+
+
+\begin{frame}
+	\def\fwidth{.6\linewidth}
 	\begin{table}
 	\begin{tabular}{m{.2\linewidth}<\centering m{.2\linewidth}m{.4\linewidth}}
 	\toprule
@@ -381,6 +439,116 @@
 	\bottomrule
 	\end{tabular}
 	\end{table}
+\end{frame}
+
+% ------------------------------------------------------------------------------
+\begin{frame}[label=aphylo-current]
+	\frametitle{Phylogenetics Modeling Strategies}
+	
+	\begin{minipage}[m]{.3\linewidth}
+		
+		\begin{figure}
+			\includegraphics[width=.9\linewidth]{phylo-model-overview-legend.pdf}
+		\end{figure}
+	\end{minipage}\hfill
+	\begin{minipage}[m]{.69\linewidth}
+		\mode<beamer>{
+			\begin{figure}
+				\phantom{\includegraphics<1>[width=.9\linewidth]{phylo-model-overview-1.pdf}}%
+				\includegraphics<2>[width=.9\linewidth]{phylo-model-overview-1.pdf}%
+				\includegraphics<3>[width=.9\linewidth]{phylo-model-overview-2.pdf}%
+				\includegraphics<4>[width=.9\linewidth]{phylo-model-overview.pdf}
+			\end{figure}
+		}
+		
+		\mode<handout>{
+			\begin{figure}
+				\includegraphics[width=.9\linewidth]{phylo-model-overview.pdf}
+			\end{figure}
+		}
+	\end{minipage}
+	
+\end{frame}
+
+% ------------------------------------------------------------------------------
+\begin{frame}[c,label=aphylo-ergm-example]
+	
+	\Large If we wanted to build a model with 3 functions, we would need to estimate...\large
+	\\\bigskip
+	
+	\begin{minipage}[t]{.40\linewidth}
+		\centering
+		\shadowbox{Full Markov Transition Matrix}\\\bigskip
+		\uncover<2->{\includegraphics[width=.8\linewidth]{aphylo-ergm-eq1.png} \\
+			\vfill 512 parameters
+		}
+	\end{minipage}\hfill
+	\begin{minipage}[t]{.19\linewidth}
+		\centering 
+		\uncover<4->{
+			\includegraphics[width=.8\linewidth]{aphylo-ergm-eq2.png}\\
+			Easier to fit \\
+			Easier to interpret}	
+	\end{minipage}\hfill
+	\begin{minipage}[t]{.40\linewidth}		
+		\centering
+		\shadowbox{Sufficient statistics}\\\bigskip
+		\uncover<3->{\includegraphics[width=.8\linewidth]{aphylo-ergm-eq2.png} \\
+			\vfill 11 parameters}
+	\end{minipage}
+	\uncover<4->{\vfill\hfill\hyperlink{current-research}{\beamerreturnbutton{numeric example}}}
+	
+\end{frame}
+
+\begin{frame}[c]
+	\frametitle{Example: Simple model with two functions}
+	
+\end{frame}
+
+
+\begin{frame}[c]
+	\frametitle{Example: Simple model with two functions}
+	\framesubtitle{posterior distributions}
+	\begin{figure}
+	\includegraphics[width=.8\linewidth]{fig/trace-gain-loss.png}
+	\caption{MCMC Trace of the functional gain and loss parameters. The true population parameters are:\linebreak$(\theta_{gain0}, \theta_{gain1}) = (2.0, 1.5)$ and $(\theta_{loss0}, \theta_{loss1}) = (-2.0, -1.5)$}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}[c]
+	\frametitle{Example: Simple model with two functions}
+	\framesubtitle{posterior distributions (contd')}
+	\begin{figure}
+		\includegraphics[width=.8\linewidth]{fig/trace-one-root.png}
+		\caption{MCMC Trace of the density parameter (onefun) and root. The true population parameters are:\linebreak $\theta_{onefun} = 2.0$ and $(\theta_{root0}, \theta_{root1}) = (-10.0, -10.0)$}
+	\end{figure}
+\end{frame}
+
+
+%-------------------------------------------------------------------------------
+\begin{frame}
+	
+	\large The key lies in the \alert{transition probability}...\normalsize
+	
+	\begin{equation}
+		\Prcond{\Ann=\mathbf{x}}{\ann{n}} = \frac{\exp{\t{\Theta} s(\mathbf{x},\ann{n})}}{\sum_{\mathbf{x}'}\exp{\t{\Theta} s(\mathbf{x}', \ann{n})}}
+	\end{equation}
+	where
+	
+	\begin{itemize}
+	\item $\mathbf{x} \equiv \{\ann{n1}, \ann{n2},\dots\}$ is an array of size $P$ (functions) $\times$ $|\offspring{n}|$ (offspring)
+	\item $\ann{n}$ is a binary vector (state of node $n$),
+	\item $\Theta$ is a column vector of parameters, and
+	\item $s(\cdot)$ is a column vector of sufficient statistics 
+	\end{itemize}
+
+It can be shown that the \alert{pruning} probability equals:
+	
+\begin{equation}
+	\Prcond{\aphyloObs_n}{\mathbf{x}_{n}, \Theta} = %
+	\sum_{\mathbf{x}}\Prcond{\mathbf{x}}{\mathbf{x}_{n}}\prod_{m \in \offspring{n}}\Prcond{\aphyloObs_{m}}{\mathbf{x}_{m}}\label{eq:depfun-depsibs}
+\end{equation}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -1179,66 +1347,7 @@ these are part of the same evolutionary tree!}
 \end{frame}
 
 
-% ------------------------------------------------------------------------------
-\begin{frame}[label=aphylo-current]
-	\frametitle{Phylogenetics Modeling Strategies}
-	
-	\begin{minipage}[m]{.3\linewidth}
-		
-		\begin{figure}
-			\includegraphics[width=.9\linewidth]{phylo-model-overview-legend.pdf}
-		\end{figure}
-	\end{minipage}\hfill
-	\begin{minipage}[m]{.69\linewidth}
-		\mode<beamer>{
-			\begin{figure}
-				\phantom{\includegraphics<1>[width=.9\linewidth]{phylo-model-overview-1.pdf}}%
-				\includegraphics<2>[width=.9\linewidth]{phylo-model-overview-1.pdf}%
-				\includegraphics<3>[width=.9\linewidth]{phylo-model-overview-2.pdf}%
-				\includegraphics<4>[width=.9\linewidth]{phylo-model-overview.pdf}
-			\end{figure}
-		}
-		
-		\mode<handout>{
-			\begin{figure}
-				\includegraphics[width=.9\linewidth]{phylo-model-overview.pdf}
-			\end{figure}
-		}
-	\end{minipage}
-	
-	\vfill\hfill\hyperlink{current-research}{\beamerreturnbutton{go back}}
-	
-\end{frame}
 
-% ------------------------------------------------------------------------------
-\begin{frame}[c,label=aphylo-ergm-example]
-	
-	\Large If we wanted to build a model with 3 functions, we would need to estimate...\large
-	\\\bigskip
-	
-	\begin{minipage}[t]{.40\linewidth}
-		\centering
-		\shadowbox{Full Markov Transition Matrix}\\\bigskip
-		\uncover<2->{\includegraphics[width=.8\linewidth]{aphylo-ergm-eq1.png} \\
-			\vfill 512 parameters
-		}
-	\end{minipage}\hfill
-	\begin{minipage}[t]{.19\linewidth}
-		\centering 
-		\uncover<4->{
-			\includegraphics[width=.8\linewidth]{aphylo-ergm-eq2.png}\\
-			Easier to fit \\
-			Easier to interpret}	
-	\end{minipage}\hfill
-	\begin{minipage}[t]{.40\linewidth}		
-		\centering
-		\shadowbox{Sufficient statistics}\\\bigskip
-		\uncover<3->{\includegraphics[width=.8\linewidth]{aphylo-ergm-eq2.png} \\
-			\vfill 5 parameters}
-	\end{minipage}
-	\uncover<4->{\vfill\hfill\hyperlink{current-research}{\beamerreturnbutton{numeric example}}}
-	
-\end{frame}
 
 
 %-------------------------------------------------------------------------------

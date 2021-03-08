@@ -171,12 +171,12 @@
 
 
 % ------------------------------------------------------------------------------
-\section{Part 1: On the Prediction of Gene Functions Using Phylogenetic Trees}
+\section{Parsimonious modeling of gene functional evolution}
 
 \begin{frame}[t]
 \usebeamertemplate{section intro}{}{}
 \textcolor{uscgold}{
-\Large {\bf Part 1: Bayesian parameter estimation for automatic annotation of gene functions using observational data and phylogenetic trees} \vskip0.25em
+\Large {\bf Parsimonious modeling of gene functional evolution} \vskip0.25em
 \large \textit{Joint with}: Paul D Thomas, Paul Marjoram, Huaiyu Mi, Duncan Thomas, and John Morrison \\
 (\small Published at \textit{PLOS Computational Biology})
 }
@@ -364,33 +364,15 @@
 \end{frame}
 
 % ------------------------------------------------------------------------------
-\begin{frame}[label=aphylo-current]
-	\frametitle{Phylogenetics Modeling Strategies}
-	
-	\begin{minipage}[m]{.3\linewidth}
-		
-		\begin{figure}
-			\includegraphics[width=.9\linewidth]{phylo-model-overview-legend.pdf}
-		\end{figure}
-	\end{minipage}\hfill
-	\begin{minipage}[m]{.69\linewidth}
-		\mode<beamer>{
-			\begin{figure}
-				\phantom{\includegraphics<1>[width=.9\linewidth]{phylo-model-overview-1.pdf}}%
-				\includegraphics<2>[width=.9\linewidth]{phylo-model-overview-1.pdf}%
-				\includegraphics<3>[width=.9\linewidth]{phylo-model-overview-2.pdf}%
-				\includegraphics<4>[width=.9\linewidth]{phylo-model-overview.pdf}
-			\end{figure}
-		}
-		
-		\mode<handout>{
-			\begin{figure}
-				\includegraphics[width=.9\linewidth]{phylo-model-overview.pdf}
-			\end{figure}
-		}
-	\end{minipage}
-	
+\section{A general framework for modeling functional evolution}
+
+\begin{frame}[t]
+	\usebeamertemplate{section intro}{}{}
+	\textcolor{uscgold}{
+		\Large {\bf A general framework for modeling functional evolution} 
+	}
 \end{frame}
+
 
 % ------------------------------------------------------------------------------
 \begin{frame}[label=aphylo-current]
@@ -401,6 +383,8 @@
 		\begin{figure}
 			\includegraphics[width=.9\linewidth]{phylo-model-overview-legend.pdf}
 		\end{figure}
+		
+		\uncover<5->{\large SNA could help us with\\\alert{\textbf{Exponential\\Random~Graph Models}}}
 	\end{minipage}\hfill
 	\begin{minipage}[m]{.69\linewidth}
 		\mode<beamer>{
@@ -421,33 +405,29 @@
 	
 \end{frame}
 
-% -------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 \begin{frame}
-	\frametitle{Computational features of \textbf{barry}}
-	\begin{minipage}[m]{.55\linewidth}
-		\vspace{-1cm}\raggedleft\includegraphics[width=.35\linewidth]{barry-logo.png}\\\vspace{-.5cm}
-		\raggedright
-		\small
-		\shadowbox{Core}
-		\begin{itemize}
-			\item<2-> C++ header-only template library.
-			\item<3-> Arrays $\equiv$ sparse matrices, i.e., small and large.
-			\item<4-> Full enumeration and support of DEM.
-			\item<5-> Arbitrary constrains for enumeration.
-		\end{itemize}
-		\uncover<6->{\shadowbox{Modeling features}}
-		\begin{itemize}
-			\item<7-> Arbitrary Model terms (suff. stats).
-			\item<8-> Hashmap recycles support, i.e., pooled data models.
-		\end{itemize}
-	\end{minipage}\hfill
-	\begin{minipage}[m]{.44\linewidth}
-		\centering
-		\uncover<8->{\includegraphics[width=1\linewidth]{ergm-computing.pdf}}
-	\end{minipage}
+	\frametitle{What are Exponential Random Graph Models}
+	
+	Exponential Family Random Graph Models, aka \alert{ERGMs} are:\pause
+	
+	\begin{itemize}
+		\item Statistical models of (social) networks.\pause
+		\item Social Network Analysis: What drives social connections?
+		\item Not about individual ties, but about local structures (sufficient statistics).\pause
+		\begin{figure}
+			\includegraphics[width=.6\linewidth]{friendly-terms.pdf}
+		\end{figure}
+		\item Social Networks $\equiv$ Adjacency Matrix $\equiv$ Binary arrays
+	\end{itemize}
+	
 \end{frame}
 
-
+% -------------------------------------------------------------------------------
+\begin{frame}
+	\frametitle{Binary Arrays: A bridge between SNA and Phylogenetics}
+	TBD
+\end{frame}
 
 \begin{frame}
 	\def\fwidth{.6\linewidth}
@@ -498,8 +478,48 @@
 		\uncover<3->{\includegraphics[width=.8\linewidth]{aphylo-ergm-eq2.png} \\
 			\vfill 11 parameters}
 	\end{minipage}
-	\uncover<4->{\vfill\hfill\hyperlink{current-research}{\beamerreturnbutton{numeric example}}}
+	\vfill
+	\uncover<5->{...I implemented this (and more) in \textbf{barry}.}
+	\uncover<4->{\hfill\hfill\hyperlink{current-research}{\beamerreturnbutton{numeric example}}}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+\begin{frame}[c]
+	\centering
+	\includegraphics[width=.25\linewidth]{fig/barry-logo.png}
 	
+	\scalebox{1.5}{\bfseries\Huge{}{\color{usccardinal}Barr}\small{}a\Huge{}{\color{usccardinal}y}\normalsize}
+	
+	\scalebox{1.2}{C++ header-only library for counting structures in binary arrays}
+	
+	\pause
+	\vfill\raggedright {\footnotesize \href{https://en.wikipedia.org/wiki/The_Sniffing_Accountant}{``The Sniffing Accountant'' (Seinfeld, Season 5, Episode 4)}}
+\end{frame}
+
+% -------------------------------------------------------------------------------
+\begin{frame}
+	\frametitle{Computational features of \textbf{barry}}
+	\begin{minipage}[m]{.55\linewidth}
+		\vspace{-1cm}\raggedleft\includegraphics[width=.35\linewidth]{barry-logo.png}\\\vspace{-.5cm}
+		\raggedright
+		\small
+		\shadowbox{Core}
+		\begin{itemize}
+			\item<2-> C++ header-only template library.
+			\item<3-> Arrays $\equiv$ sparse matrices, i.e., small and large.
+			\item<4-> Full enumeration and support of DEM.
+			\item<5-> Arbitrary constrains for enumeration.
+		\end{itemize}
+		\uncover<6->{\shadowbox{Modeling features}}
+		\begin{itemize}
+			\item<7-> Arbitrary Model terms (suff. stats).
+			\item<8-> Hashmap recycles support, i.e., pooled data models.
+		\end{itemize}
+	\end{minipage}\hfill
+	\begin{minipage}[m]{.44\linewidth}
+		\centering
+		\uncover<8->{\includegraphics[width=1\linewidth]{ergm-computing.pdf}}
+	\end{minipage}
 \end{frame}
 
 \begin{frame}[c]
@@ -567,73 +587,7 @@ It can be shown that the \alert{pruning} probability equals:
 \end{equation}
 \end{frame}
 
-%-------------------------------------------------------------------------------
-\begin{frame}[c]
-\frametitle{Social Networks}
 
-\begin{minipage}[m]{.3\linewidth}
-	\begin{itemize}
-		\item<2-> If COVID-19 has taught us something it is that networks matter.
-		\item<3-> And especially small networks: Families, teams, friends, etc. \uncover<4->{The cornerstone of larger social systems.}
-		\item<5-> We can study networks using ERGMs.
-	\end{itemize}
-\vfill
-\uncover<1->{\tiny \textbf{Data:} Friendship network of a UK university faculty from \textbf{igraphdata}. \textbf{Viz:} R package \textbf{netplot} (yours truly, \href{https://github.com/usccana/netplot}{github.com/usccana/netplot})\normalsize}
-\end{minipage}\hfill
-\begin{minipage}[m]{.69\linewidth}
-\begin{figure}
-	\centering
-	\includegraphics<1->[height=.85\textheight]{ukfaculty-igraph.pdf}
-\end{figure}
-
-\end{minipage}
-
-
-\end{frame}
-
-%-------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{What are Exponential Random Graph Models}
-
-Exponential Family Random Graph Models, aka \alert{ERGMs} are:\pause
-
-\begin{itemize}
-\item Statistical models of (social) networks.\pause
-\item Not about individual ties, but about local structures (sufficient statistics).\pause
-\begin{figure}
-\includegraphics[width=.6\linewidth]{friendly-terms.pdf}
-\end{figure}
-%\item Used to test hypotheses 
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}[t,label=discrete-exponential]
-	
-	\frametitle{Discrete Exponential-Family Models}
-	
-	\begin{figure}
-		\includegraphics[width=.7\linewidth]{parts-of-ergm.pdf}
-	\end{figure}\pause
-	
-	\vfill
-		
-	\begin{itemize}
-		%\item<2-> Focused on sufficient statistics $\s{\graph,x}$ \uncover<3->{\textbf{e.g.}\\Two Bernoulli, a.k.a. Erd\H{o}s-R\'enyi, random graphs}.
-		\item For any directed graph of size $n$, there are $2^{n(n - 1)}$ possible realizations.\pause
-		\item A directed graph of size 5 has 1,048,576 possible configurations!\pause
-		\item Most (all) applications use \textbf{approximations}...\pause{} yet, for sufficiently small graphs we ``can be exact.''
-	\end{itemize}\pause
-
-\bigskip
-
-	\hfill\Large ... I implemented this in the \textbf{ergm\color{usccardinal}{ito}} R package\normalsize
-	
-	\vfill\hfill\hyperlink{discrete-exponential-theory}{\beamergotobutton{more theory}} %
-	\hyperlink{ergm-terms}{\beamergotobutton{more terms}}
-
-	
-\end{frame}
 
 
 %%-------------------------------------------------------------------------------
@@ -718,7 +672,7 @@ Exponential Family Random Graph Models, aka \alert{ERGMs} are:\pause
 	\usebeamertemplate{section intro}{}{}
 	\textbf{%
 		\color{uscgold}
-		\Large Statistical and Computational Methods for Complex Systems\large %
+		\Large Triads, Dyads, and Gene Functions\\When Social Network Analysis Meets Phylogenetics\large %
 	}
 
 	\textbf{
@@ -763,49 +717,6 @@ Exponential Family Random Graph Models, aka \alert{ERGMs} are:\pause
 
 % ------------------------------------------------------------------------------
 \changemode{handout}
-
-% ------------------------------------------------------------------------------
-\begin{frame}[label=aphylographicalview,c]
-	\frametitle{An evolutionary model of gene functions}
-	\def\shadowsize{2pt}
-	\definecolor{rootnode}{RGB}{0,159,211}
-	\definecolor{innernode}{RGB}{90,159,89}
-	\definecolor{leafnode}{RGB}{255,107,0}
-	
-	\begin{minipage}[m]{.60\linewidth}
-		\begin{figure}
-			\footnotesize
-			\centering
-			\mode<beamer>{
-				\only<1>{\includegraphics[width=.9\linewidth]{phylo-model2-0.pdf}}%
-				\only<2>{\includegraphics[width=.9\linewidth]{phylo-model2-1.pdf}}%
-				\only<3>{\includegraphics[width=.9\linewidth]{phylo-model2-2.pdf}}%
-				\only<4>{\includegraphics[width=.9\linewidth]{phylo-model2-3.pdf}}%
-				\only<5>{\includegraphics[width=.9\linewidth]{phylo-model2-4.pdf}}%
-				\only<6>{\includegraphics[width=.9\linewidth]{phylo-model2-5.pdf}}%
-				\only<7>{\includegraphics[width=.9\linewidth]{phylo-model2-6.pdf}}%
-				\only<8>{\includegraphics[width=.9\linewidth]{phylo-model2-7.pdf}}%
-				\only<9->{\includegraphics[width=.9\linewidth]{phylo-model2.pdf}}%
-			}\mode<handout>{\includegraphics[width=.9\linewidth]{fig/phylo-model2.pdf}}
-		\end{figure}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[m]{.38\linewidth}
-		\pause
-		\begin{itemize}
-			\item Starting with the root node (no function in this case).\pause
-			\item Passes the baton to its offspring.\pause
-			\item Possibly without change (on this particular function).\pause
-			\item Or, with some probability, gaining...\pause[7] or loosing the function.\pause
-			%			\item \textcolor{leafnode}{\textbf{Observed} annotations may be incorrect.}\pause
-			\item Until it reaches the end of the tree (modern genes).\pause
-		\end{itemize}
-		\vfill\hfill\hyperlink{duplicationvsspeciation}{\beamergotobutton{more on diplication}} %
-		\hyperlink{aphylographicalview}{\beamergotobutton{alt view}}
-		\hyperlink{aphylo-prob-diagram}{\beamerreturnbutton{go back}}
-	\end{minipage}
-	
-\end{frame}
 
 % ------------------------------------------------------------------------------
 \begin{frame}[label=go-functions-types]
@@ -1050,44 +961,6 @@ these are part of the same evolutionary tree!}
 
 \end{frame}
 
-% ------------------------------------------------------------------------------
-\begin{frame}[label=aphylographicalview-altview,c]
-	\frametitle{An evolutionary model of gene functions}
-	\def\shadowsize{2pt}
-	\definecolor{rootnode}{RGB}{0,159,211}
-	\definecolor{innernode}{RGB}{90,159,89}
-	\definecolor{leafnode}{RGB}{255,107,0}
-	
-	\begin{minipage}[m]{.60\linewidth}
-		\begin{figure}
-			\footnotesize
-			\centering
-			\def\svgwidth{.9\linewidth}
-			\mode<beamer>{
-				\only<1>{\input{fig/phylo-model-0.pdf_tex}}%
-				\only<2>{\input{fig/phylo-model-0b.pdf_tex}}%
-				\only<3>{\input{fig/phylo-model-0c.pdf_tex}}%
-				\only<4>{\input{fig/phylo-model-1.pdf_tex}}%
-				\only<5-6>{\input{fig/phylo-model-2a.pdf_tex}}%
-				\only<7>{\input{fig/phylo-model-2b.pdf_tex}}%
-				\only<8>{\input{fig/phylo-model.pdf_tex}}
-			}\mode<handout>{\input{fig/phylo-model.pdf_tex}}
-		\end{figure}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[m]{.38\linewidth}
-		\pause
-		\begin{itemize}
-			\item \textcolor{rootnode}{Root has the function.}\pause[4]
-			\item \textcolor{innernode}{Gain\pause{} and loss\pause{} (also depends on the type of event \hyperlink{duplicationvsspeciation}{\beamergotobutton{more}}}).\pause
-			\item \textcolor{leafnode}{\textbf{Observed} annotations may be incorrect.}\pause
-			\item Only a fraction of the known genes have some form of annotation.
-		\end{itemize}
-		\vfill\hfill\hyperlink{aphylographicalview}{\beamerreturnbutton{go back}}
-	\end{minipage}
-	
-\end{frame}
-
 
 % ------------------------------------------------------------------------------
 \begin{frame}[label = duplicationvsspeciation]
@@ -1239,36 +1112,6 @@ these are part of the same evolutionary tree!}
 	
 \end{frame}
 
-% ------------------------------------------------------------------------------
-\begin{frame}[c, label=aphylo-model-levels]
-	\frametitle{Phylogenetics Modeling: Pooling data}
-	
-	\begin{minipage}[m]{.5\linewidth}
-		\begin{figure}
-			\mode<beamer>{
-				\includegraphics<1-2>[width=.8\linewidth]{phylo-bayes-a.pdf}%
-				\includegraphics<3>[width=.8\linewidth]{phylo-bayes-b.pdf}%
-				\includegraphics<4>[width=.8\linewidth]{phylo-bayes-c.pdf}%
-				\includegraphics<5->[width=.8\linewidth]{phylo-bayes.pdf}
-			}%
-			\mode<handout>{\includegraphics<5>[width=.8\linewidth]{phylo-bayes.pdf}}
-		\end{figure}
-	\end{minipage}
-	\begin{minipage}[m]{.48\linewidth}
-		\begin{enumerate}
-			\item[(a)]<2-> Featured in the first version of the model.
-			\item[(b)]<3-> ``Full glory'' Hierarchical Bayes (1,001 parameters for the 141 functions).
-			\item[(c)]<4-> Distilled version (a), improves accuracy.
-			\item[(d)]<5-> Model estimated for Molecular Function (using Empirical Bayes) without significant improvements.
-		\end{enumerate}
-	\end{minipage}
-	\vfill
-	\uncover<6->{All methods are now available in the \texttt{aphylo} package: \texttt{aphylo\_mle}, \texttt{aphylo\_mcmc}, and \texttt{aphylo\_hier}.}
-	
-	\hyperlink{aphylo-results-overview}{\beamerreturnbutton{go back}}
-	
-\end{frame}
-
 
 % ------------------------------------------------------------------------------
 % ------------------------------------------------------------------------------
@@ -1364,35 +1207,6 @@ these are part of the same evolutionary tree!}
 
 
 
-
-
-%-------------------------------------------------------------------------------
-\begin{frame}[c, label=barry-pkg]
-	\frametitle{Barry: your go-to \textit{motif} accountant}
-	\centering
-	\begin{minipage}[m]{.33\linewidth}
-		\small
-		\begin{itemize}
-			\item<1-> Sparse matrix represented using double hashmaps (fast row/column access).
-			\item<2-> Template implementation for flexible weights and metadata.
-			%	\item<3-> Full enumeration of array powersets.
-			\item<3-> Fast counting using change statistics (\tiny Ch. 4\normalsize).
-			\item<4-> Calculation of support for sufficient stats.
-		\end{itemize}
-		\only<1->{\url{https://USCbiostats.github.io/binaryarrays}}
-	\end{minipage}\hfill
-	\begin{minipage}[m]{.65\linewidth}
-		\begin{figure}
-			\begin{minipage}[m]{.49\linewidth}
-				\uncover<5->{\includegraphics[width=.99\linewidth]{barray-phylo.png}}
-			\end{minipage}
-			\begin{minipage}[m]{.49\linewidth}
-				\uncover<6->{\includegraphics[width=.99\linewidth]{barray-network.png}}
-			\end{minipage}
-			\uncover<5->{\caption{Screenshots from the project's website on GitHub.}}
-		\end{figure}
-	\end{minipage}
-\end{frame}
 
 
 % ------------------------------------------------------------------------------

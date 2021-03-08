@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169,9pt,handout]{beamer}
+\documentclass[aspectratio=169, 9pt, handout]{beamer}
 
 %\transdissolve[duration=0.2] % Only works with Adobe Acrobat
 
@@ -34,13 +34,6 @@
 
 \newcommand{\logit}[1]{\mbox{logit}^{-1}\left(#1\right)}
 % -------------------------------------------------------------------------------
-
-\usepackage[style=authoryear-comp]{biblatex}
-\addbibresource{bibliography-aphylo.bib}
-\addbibresource{bibliography-ergmito.bib}
-\addbibresource{bibliography-extra.bib}
-\addbibresource{bibliography.bib}
-% \renewcommand{\bibsection}{\subsubsection*{\bibname } }
 
 % Neat trick to change the mode mid-presentation
 % https://tex.stackexchange.com/questions/91691/beamer-set-mode-mid-presentation?rq=1
@@ -882,60 +875,6 @@ these are part of the same evolutionary tree!}
 \end{frame}
 
 
-%% ------------------------------------------------------------------------------
-%\begin{frame}[label=other-models]
-%\frametitle{Predicting gene functions}
-%There are various approaches for this, some to highlight
-%\begin{itemize}%[<+->]
-%\item Text analysis like in \cite{Pesaranghader2016}
-%\item Protein-protein interaction networks like in \cite{Oliver2000,Piovesan2015}.
-%\item Phylogenetic based like SIFTER \cite{Engelhardt2005,Engelhardt2011}.
-%\begin{itemize}
-%\item Parameters to estimate: $2^{2P}$, where $P$ is the number of functions.
-%\end{itemize}
-%\end{itemize}
-%
-%\vfill \hfill (a nice literature review in \cite{Jiang2016,Yu2018})
-%\hyperlink{aphylographicalview}{\beamerreturnbutton{go back}}
-%
-%\end{frame}
-
-
-% ------------------------------------------------------------------------------
-%\begin{frame}[label=aphyloalgorithmicview]
-%\frametitle{An evolutionary model of gene functions (algorithmic view)}
-%
-%\scalebox{.7}{
-%
-%\begin{algorithm}[H]
-%\SetAlgoLined
-%\KwData{A phylogenetic tree, $\{\pi, \mu, \psi\}$(Model probabilities)}
-%\KwResult{An annotated tree}
-%%\pause
-%\For{$n \in PostOrder(N)$}{
-%  $\mbox{\bf\color{usccardinal}Nodes gain/loss function depending on their parent}$\;%\pause
-%  \Switch{class of $n$}{
-%    \uCase{root node}{
-%      Gain function with probability $\pi$\;
-%    }%\pause
-%    \uCase{interior node} {%\pause
-%      \lIf{Parent has the function}{Keep it with prob. $(1-\mu_1)$}%\pause
-%      \lElse{Gain it with prob. $\mu_0$}%\pause
-%    }
-%  }%\pause
-%  $\mbox{\bf\color{usccardinal}Finally, we allow for mislabeling}$\;%\pause
-%  \uIf{$n$ is leaf}{%\pause
-%    \lIf{has the function}{Mislabel with prob. $\psi_1$}%\pause
-%    \lElse{Mislabel with prob. $\psi_0$}%\pause
-%  }
-%}
-%\end{algorithm}
-%}
-%
-%\vfill\hfill \hyperlink{aphylographicalview}{\beamergotobutton{go back}}
-%
-%
-%\end{frame}
 
 % --------------------------
 \begin{frame}[label=aphylo-pooled]
@@ -971,7 +910,7 @@ these are part of the same evolutionary tree!}
 \tiny
 % Source 
 \input{fig/Drosophila_speciation_experiment.pdf_tex}
-\caption{\cite{Dodd1989}: After one year of isolation, flies showed a significant level of assortativity in mating (\href{https://commons.wikimedia.org/wiki/File:Drosophila_speciation_experiment.svg}{wikimedia})}
+\caption{Dodd (1989): After one year of isolation, flies showed a significant level of assortativity in mating (\href{https://commons.wikimedia.org/wiki/File:Drosophila_speciation_experiment.svg}{wikimedia})}
 \end{figure}
 
 \vfill\hfill \hyperlink{aphylographicalview}{\beamerreturnbutton{go back}}
@@ -1188,7 +1127,7 @@ these are part of the same evolutionary tree!}
 		\end{table}
 		\normalsize
 		
-		\only<1->{\vfill\hfill\hyperlink{phylo-data}{\beamergotobutton{data}}}
+		\only<1->{\vfill\hfill\hyperlink{aphylo-data}{\beamergotobutton{data}}}
 		\only<1->{\vfill\hfill\hyperlink{aphylo-results-overview}{\beamergotobutton{go back}}}
 		
 	\end{minipage}
@@ -1299,13 +1238,6 @@ these are part of the same evolutionary tree!}
 		\end{figure}
 	\end{minipage}
 	\vfill\hfill\hyperlink{aphylo-ergm-example}{\beamergotobutton{return}}
-\end{frame}
-
-\begin{frame}[allowframebreaks]
-	\frametitle{References}
-	% \bibliographystyle{apacite}
-	% \bibliography{bibliography.bib}
-	\printbibliography
 \end{frame}
 
 \end{document}

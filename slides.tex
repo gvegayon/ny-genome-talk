@@ -512,8 +512,8 @@
 	\frametitle{Example: Simple model with two functions}
 	\framesubtitle{posterior distributions}
 	\begin{figure}
-	\includegraphics[width=.8\linewidth]{fig/trace-gain-loss.png}
-	\caption{MCMC Trace of the functional gain and loss parameters. The true population parameters are:\linebreak$(\theta_{gain0}, \theta_{gain1}) = (2.0, 1.5)$ and $(\theta_{loss0}, \theta_{loss1}) = (-2.0, -1.5)$}
+	\includegraphics[width=.8\linewidth]{fig/trace-gain-neo.png}
+	\caption{MCMC Trace of the functional gain of 0, neofunctionalization (1 from 0), and change rate (by event type). The true population parameters are:\linebreak$(\theta_{gain0}, \theta_{gain1}) = (2.0, 1.5)$ and $(\theta_{loss0}, \theta_{loss1}) = (-2.0, -1.5)$}
 	\end{figure}
 \end{frame}
 
@@ -522,8 +522,8 @@
 	\frametitle{Example: Simple model with two functions}
 	\framesubtitle{posterior distributions (contd')}
 	\begin{figure}
-		\includegraphics[width=.8\linewidth]{fig/trace-one-root.png}
-		\caption{MCMC Trace of the density parameter (onefun) and root. The true population parameters are:\linebreak $\theta_{onefun} = 2.0$ and $(\theta_{root0}, \theta_{root1}) = (-10.0, -10.0)$}
+		\includegraphics[width=.8\linewidth]{fig/trace-root.png}
+		\caption{MCMC Trace of root parameters. The true population parameters are $(\theta_{root0}, \theta_{root1}) = (-10.0, -10.0)$}
 	\end{figure}
 \end{frame}
 
@@ -534,11 +534,11 @@
 
 \begin{figure}
 	\centering
-	\includegraphics[width=.45\linewidth]{fig/aphylo-sim-study.pdf}
-	\caption{Distribution of parameter estimates from 5,000 annotated trees of size 99.
+		\caption{Distribution of parameter estimates from 5,000 annotated trees of size 99.
 		Parameter estimates were obtained using MCMC with Robust Adaptive
 		Metropolis and logistic prior with scale 2 and mean 0.
 	}
+	\includegraphics[width=.5\linewidth]{fig/aphylo-sim-study.pdf}
 \end{figure}
 
 \end{frame}

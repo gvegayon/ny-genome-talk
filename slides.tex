@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169, 9pt, handout]{beamer}
+\documentclass[aspectratio=169, 9pt]{beamer}
 
 %\transdissolve[duration=0.2] % Only works with Adobe Acrobat
 
@@ -58,7 +58,7 @@
 }
 \author[GGVY -- \href{vegayon@usc.edu}{vegayon@usc.edu}]{George G Vega Yon, Ph.D.}
 \institute[USC-PREVMED]{University of Southern California, Department of Preventive Medicine}
-\date{NY Genome Center\\December 10, 2020}
+\date{NY Genome Center\\March 9, 2021}
 
 % Some definitions
 \def\cursection{\frame{\frametitle{Contents}\tableofcontents[current]}}
@@ -105,41 +105,6 @@
 %	\end{minipage}
 %
 %\end{center}
-\end{frame}
-
-%% ------------------------------------------------------------------------------
-%\begin{frame}
-%\frametitle{What motivates my research}
-%
-%\centering
-%
-%\begin{center}
-%\large
-%\textcolor{usccardinal}{
-%Essays on Bioinformatics and Social Network Analysis
-%\linebreak{\small Statistical and Computational Methods for Complex Systems}
-%}
-%\end{center}\pause
-%
-%\begin{itemize}
-%\item We live in a non-{\it IID} world.\pause
-%\item Sometimes, we cannot understand a process unless we look at it as a whole.\pause
-%\item But, while ``the whole'' may be difficult to analyze...\\
-%\hfill \pause{\it modern} statistical and computational tools cap help us cope with that.
-%\end{itemize}
-%\end{frame}
-
-\begin{frame}[c]
-	%	\frametitle{George G. Vega Yon}
-	
-	\Large My work sits at the intersection between...\normalsize
-	
-	
-	\uncover<2->{\byside{.32}{Statistics}{\includegraphics[width=.8\linewidth]{mcmc.png}\\Bayesian, Non-parametric, Spatial}}
-	\uncover<3->{\byside{.32}{Computer Science}{\includegraphics[width=.8\linewidth]{time.png}\\ parallel computing, HPC, software}}
-	\uncover<4->{\byside{.32}{Complex Systems}{\includegraphics[width=.8\linewidth]{complex.png}\\social, biological, technical}}
-	
-	
 \end{frame}
 
 \frame{\frametitle{Contents}
@@ -377,7 +342,7 @@
 			\includegraphics[width=.9\linewidth]{phylo-model-overview-legend.pdf}
 		\end{figure}
 		
-		\uncover<5->{\large SNA could help us with\\\alert{\textbf{Exponential\\Random~Graph Models}}}
+% 		\uncover<5->{\large SNA could help us with\\\alert{\textbf{Exponential\\Random~Graph Models}}}
 	\end{minipage}\hfill
 	\begin{minipage}[m]{.69\linewidth}
 		\mode<beamer>{
@@ -398,49 +363,102 @@
 	
 \end{frame}
 
-%-------------------------------------------------------------------------------
-\begin{frame}
-	\frametitle{What are Exponential Random Graph Models}
+% ------------------------------------------------------------------------------
+\begin{frame}[c]
 	
-	Exponential Family Random Graph Models, aka \alert{ERGMs} are:\pause
+	\Large If we wanted to build a model with 3 functions, we would need to estimate...\large
+	\\\bigskip
 	
-	\begin{itemize}
-		\item Statistical models of (social) networks.\pause
-		\item Social Network Analysis: What drives social connections?
-		\item Not about individual ties, but about local structures (sufficient statistics).\pause
-		\begin{figure}
-			\includegraphics[width=.6\linewidth]{friendly-terms.pdf}
-		\end{figure}
-		\item Social Networks $\equiv$ Adjacency Matrix $\equiv$ Binary arrays
-	\end{itemize}
-	
+	\begin{minipage}[t]{.40\linewidth}
+		\centering
+		\shadowbox{Full Markov Transition Matrix}\\\bigskip
+		\uncover<2->{\includegraphics[width=.8\linewidth]{aphylo-ergm-eq1.png} \\
+			\vfill 
+		}
+	\end{minipage}\hfill
+	\uncover<3->{\begin{minipage}[t]{.50\linewidth}
+	    \vfill
+	    \begin{itemize}
+	        \item<2-> 512 parameters
+	        \item<3-> Finding this many parameters not easy.
+	        \item<4-> Even if you can, interpretation is awkward.
+	    \end{itemize}
+	\end{minipage}}
+	\vfill
+% 	\uncover<5->{Social Network Analysis may help us...}
 \end{frame}
 
+
+
 % -------------------------------------------------------------------------------
-\begin{frame}
-	\frametitle{Binary Arrays: A bridge between SNA and Phylogenetics}
+\begin{frame}[t]
+	\frametitle{Exponential Random Graph Models}
 	
-	\begin{minipage}[c]{.49\linewidth}
-	\begin{figure}
-	    \centering
-	    \includegraphics[width=.7\linewidth]{fig/adjmat-network.png}
-	    \caption{Caption}
-        \label{fig:my_label}
-	\end{figure}    
-	\end{minipage}\hfill
-	\begin{minipage}[c]{.49\linewidth}
-	\begin{figure}
-	    \centering
-	    \includegraphics[width=.7\linewidth]{fig/adjmat-aphylo.png}
-	    \caption{Caption}
-        \label{fig:my_label}
-	\end{figure}    
+    \byside{.45}{Social Network}{%
+	    \includegraphics[height=3cm]{fig/adjmat-network.png}
+	} \hfill %
+	\begin{minipage}[t]{.45\linewidth}
+	    \bigskip
+	    \begin{itemize}
+	    \item<2-> Not about individual ties.
+	    \item<3-> Statistical inference on \textit{motifs} (triangles, dyads, homophily, etc.)
+	    \end{itemize}
+	    \bigskip
+	    \uncover<4->{Ultimately... \\
+	    \Large
+	    \textbf{ERGM} $\equiv$ \textbf{Modeling binary arrays}
+	    \normalsize}
+	    
 	\end{minipage}
 	
 \end{frame}
 
+% -------------------------------------------------------------------------------
+\begin{frame}[t]
+	\frametitle{Exponential Random Graph Models}
+	
+	\byside{.45}{Social Network}{%
+	    \includegraphics[height=3cm]{fig/adjmat-network.png}
+	} \hfill %
+	\byside{.45}{Evolutionary Event}{%
+	    \includegraphics[height=3cm]{fig/adjmat-aphylo.png}
+	}
+	\vfill
+	Social Networks are usually represented as \textbf{adjacency matrices}, and so can evolutionary events!
+	
+\end{frame}
+
+% ------------------------------------------------------------------------------
+\begin{frame}[c,label=aphylo-ergm-example]
+	
+	\Large If we wanted to build a model with 3 functions, we would need to estimate...\large
+	\\\bigskip
+	
+	\begin{minipage}[t]{.40\linewidth}
+		\centering
+		\shadowbox{Full Markov Transition Matrix}\\\bigskip
+		\includegraphics[width=.8\linewidth]{aphylo-ergm-eq1.png} \\
+			\vfill 512 parameters
+	\end{minipage}\hfill
+	\begin{minipage}[t]{.19\linewidth}
+		\centering 
+		\uncover<3->{
+			\includegraphics[width=.8\linewidth]{aphylo-ergm-eq2.png}\\
+			Easier to fit \\
+			Easier to interpret}	
+	\end{minipage}\hfill
+	\uncover<2->{\begin{minipage}[t]{.40\linewidth}		
+		\centering
+		\shadowbox{Sufficient statistics}\\\bigskip
+		\includegraphics[width=.8\linewidth]{aphylo-ergm-eq2.png} \\
+			\vfill 11 parameters
+	\end{minipage}}
+	\vfill
+	\uncover<3->{\hfill\hfill\hyperlink{current-research}{\beamerreturnbutton{numeric example}}}
+\end{frame}
+
 \begin{frame}
-	\def\fwidth{.6\linewidth}
+	\def\fwidth{.55\linewidth}
 	\begin{table}
 	\begin{tabular}{m{.2\linewidth}<\centering m{.2\linewidth}m{.4\linewidth}}
 	\toprule
@@ -461,37 +479,21 @@
 \end{frame}
 
 
-
-% ------------------------------------------------------------------------------
-\begin{frame}[c,label=aphylo-ergm-example]
-	
-	\Large If we wanted to build a model with 3 functions, we would need to estimate...\large
-	\\\bigskip
-	
-	\begin{minipage}[t]{.40\linewidth}
-		\centering
-		\shadowbox{Full Markov Transition Matrix}\\\bigskip
-		\uncover<2->{\includegraphics[width=.8\linewidth]{aphylo-ergm-eq1.png} \\
-			\vfill 512 parameters
-		}
-	\end{minipage}\hfill
-	\begin{minipage}[t]{.19\linewidth}
-		\centering 
-		\uncover<4->{
-			\includegraphics[width=.8\linewidth]{aphylo-ergm-eq2.png}\\
-			Easier to fit \\
-			Easier to interpret}	
-	\end{minipage}\hfill
-	\begin{minipage}[t]{.40\linewidth}		
-		\centering
-		\shadowbox{Sufficient statistics}\\\bigskip
-		\uncover<3->{\includegraphics[width=.8\linewidth]{aphylo-ergm-eq2.png} \\
-			\vfill 11 parameters}
-	\end{minipage}
-	\vfill
-	\uncover<5->{...I implemented this (and more) in \textbf{barry}.}
-	\uncover<4->{\hfill\hfill\hyperlink{current-research}{\beamerreturnbutton{numeric example}}}
+%-------------------------------------------------------------------------------
+\begin{frame}[c]
+\frametitle{Tree likelihoods: Felsenstein's Pruning algorithm}
+\begin{center}
+    \mode<beamer>{%
+    \includegraphics<1>[width=.6\linewidth]{aphylo-equation1.pdf}%
+    \includegraphics<2>[width=.6\linewidth]{aphylo-equation.pdf}
+    }%
+    \mode<handout>{%
+    \includegraphics[width=.6\linewidth]{aphylo-equation.pdf}
+    }
+\end{center}
+\vfill\hfill\uncover<2->{... I implemented this (and more) on \textbf{barry}}
 \end{frame}
+
 
 %-------------------------------------------------------------------------------
 \begin{frame}[c]
@@ -502,7 +504,6 @@
 	
 	\scalebox{1.2}{C++ header-only library for counting structures in binary arrays}
 	
-	\pause
 	\vfill\raggedright {\footnotesize \href{https://en.wikipedia.org/wiki/The_Sniffing_Accountant}{``The Sniffing Accountant'' (Seinfeld, Season 5, Episode 4)}}
 \end{frame}
 
@@ -517,7 +518,7 @@
 		\begin{itemize}
 			\item<2-> C++ header-only template library.
 			\item<3-> Arrays $\equiv$ sparse matrices, i.e., small and large.
-			\item<4-> Full enumeration and support of DEM.
+			\item<4-> Full enumeration and support of binary arrays.
 			\item<5-> Arbitrary constrains for enumeration.
 		\end{itemize}
 		\uncover<6->{\shadowbox{Modeling features}}
@@ -534,7 +535,17 @@
 
 \begin{frame}[c]
 	\frametitle{Example: Simple model with two functions}
-	
+	To illustrate, we will \textbf{simulate} and then \textbf{estimate} the parameters for the following process:
+	\begin{enumerate}
+	    \item<2-> 100 genes on a simulated phylogenetic tree.
+	    \item<2-> Two functions, 0 and 1,
+	    \item<3-> Function 0 is gain with some prob. at a dupl. event,
+	    \item<3-> Function 1 is gain as neofunctionalization (from 0) at a dupl. event,
+	    \item<4-> There is a higher chance of changes at duplication.
+	    \item<4-> There is low chance root node starts off with either 0 or 1.
+	\end{enumerate}
+	\vfill
+	\uncover<5->{We will fit the model using Robust Adaptive Metropolis with a logistic prior centered at 0 with scale 2.}
 \end{frame}
 
 
@@ -543,7 +554,7 @@
 	\framesubtitle{posterior distributions}
 	\begin{figure}
 	\includegraphics[width=.8\linewidth]{fig/trace-gain-neo.png}
-	\caption{MCMC Trace of the functional gain of 0, neofunctionalization (1 from 0), and change rate (by event type). The true population parameters are:\linebreak$(\theta_{gain0}, \theta_{gain1}) = (2.0, 1.5)$ and $(\theta_{loss0}, \theta_{loss1}) = (-2.0, -1.5)$}
+	\caption{MCMC Trace of the functional gain of 0, neofunctionalization (1 from 0), and change rate (by event type).}
 	\end{figure}
 \end{frame}
 
@@ -553,7 +564,7 @@
 	\framesubtitle{posterior distributions (contd')}
 	\begin{figure}
 		\includegraphics[width=.8\linewidth]{fig/trace-root.png}
-		\caption{MCMC Trace of root parameters. The true population parameters are $(\theta_{root0}, \theta_{root1}) = (-10.0, -10.0)$}
+		\caption{MCMC Trace of root parameters. The true population parameters are $(\theta_{root0}, \theta_{root1}) = (-10.0, -10.0)$. Root node probabilities are always hard to get.}
 	\end{figure}
 \end{frame}
 
@@ -562,40 +573,53 @@
 \begin{frame}
 \frametitle{Simulation Study}
 
-\begin{figure}
-	\centering
-		\caption{Distribution of parameter estimates from 5,000 annotated trees of size 99.
-		Parameter estimates were obtained using MCMC with Robust Adaptive
-		Metropolis and logistic prior with scale 2 and mean 0.
-	}
-	\includegraphics[width=.5\linewidth]{fig/aphylo-sim-study.pdf}
-\end{figure}
-
+\begin{minipage}[c]{.40\linewidth}
+Repeated this experiment 5,000 times:
+    \begin{itemize}
+        \item MCMC for fitting.
+        \item RAM kernel.
+        \item Logistic prior at zero with scale two.
+        \item Each tree took $<$ 1min estimation.
+    \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[c]{.59\linewidth}
+\uncover<2->{\begin{figure}    
+\centering
+		\caption{Distribution of parameter estimates from 5,000 phylo trees w/ 100 leafs.}
+	\includegraphics[width=.85\linewidth]{fig/aphylo-sim-study.pdf}
+\end{figure}}
+\end{minipage}
+	
 \end{frame}
-%-------------------------------------------------------------------------------
-\begin{frame}
-	
-	\large The key lies in the \alert{transition probability}...\normalsize
-	
-	\begin{equation}
-		\Prcond{\Ann=\mathbf{x}}{\ann{n}} = \frac{\exp{\t{\Theta} s(\mathbf{x},\ann{n})}}{\sum_{\mathbf{x}'}\exp{\t{\Theta} s(\mathbf{x}', \ann{n})}}
-	\end{equation}
-	where
-	
-	\begin{itemize}
-	\item $\mathbf{x} \equiv \{\ann{n1}, \ann{n2},\dots\}$ is an array of size $P$ (functions) $\times$ $|\offspring{n}|$ (offspring)
-	\item $\ann{n}$ is a binary vector (state of node $n$),
-	\item $\Theta$ is a column vector of parameters, and
-	\item $s(\cdot)$ is a column vector of sufficient statistics 
-	\end{itemize}
 
-It can be shown that the \alert{pruning} probability equals:
-	
-\begin{equation}
-	\Prcond{\aphyloObs_n}{\mathbf{x}_{n}, \Theta} = %
-	\sum_{\mathbf{x}}\Prcond{\mathbf{x}}{\mathbf{x}_{n}}\prod_{m \in \offspring{n}}\Prcond{\aphyloObs_{m}}{\mathbf{x}_{m}}\label{eq:depfun-depsibs}
-\end{equation}
+\begin{frame}[t]
+\frametitle{Take home}
+\byside{.33}{Goal}{
+    \centering %
+    \vspace{.625cm}
+    \includegraphics[height=.75cm]{aphylo-data-probability.pdf}
+    \vspace{.625cm}
+    \begin{itemize}
+        \item We are in a race for uncovering \textbf{what genes do}.
+        \item \textbf{Automatic algorithms} provide a way.
+    \end{itemize}
+}\hfill
+\byside{.33}{Today}{
+    \includegraphics[height=2cm]{fig/term-longest.png}
+    \begin{itemize}
+        \item Many alternatives... many unrealistic \textbf{assumptions}.
+        \item \textbf{barry} (Sufficient Stats.): a general framework for gene function evolution.
+    \end{itemize}
+}\hfill
+\byside{.33}{Future}{
+\includegraphics[height=2cm]{aphylo-data-2.png}
+    \begin{itemize}
+        \item Further study properties of the model (bias/power/accuracy).
+        \item Start working on extensions.
+    \end{itemize}
+}
 \end{frame}
+
 
 
 
@@ -1225,6 +1249,24 @@ these are part of the same evolutionary tree!}
 	\vfill\hfill\hyperlink{aphylo-ergm-example}{\beamergotobutton{return}}
 	%	\pause
 	%	Modeling the full Markov transition matrix would take $2^3 \times 2^6 = 512$ parameters.
+	
+\end{frame}
+
+%-------------------------------------------------------------------------------
+\begin{frame}[label=ermgs-description]
+	\frametitle{What are Exponential Random Graph Models}
+	
+	Exponential Family Random Graph Models, aka \alert{ERGMs} are:\pause
+	
+	\begin{itemize}
+		\item Statistical models of (social) networks.\pause
+		\item Social Network Analysis: What drives social connections?
+		\item Not about individual ties, but about local structures (sufficient statistics).\pause
+		\begin{figure}
+			\includegraphics[width=.6\linewidth]{friendly-terms.pdf}
+		\end{figure}
+		\item Social Networks $\equiv$ Adjacency Matrix $\equiv$ Binary arrays
+	\end{itemize}
 	
 \end{frame}
 

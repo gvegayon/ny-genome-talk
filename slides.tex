@@ -110,22 +110,8 @@
 \frame{\frametitle{Contents}
 	\tableofcontents
 	\vfill
-	You can download the slides from\large{} {\color{usccardinal}\href{https://ggv.cl/slides/uai-fic}{ggv.cl/slides/uai-fic}}\normalsize
+	You can download the slides from\large{} {\color{usccardinal}\href{https://ggv.cl/slides/nygc}{ggv.cl/slides/nygc}}\normalsize
 }
-
-%\begin{frame}
-%		\Large Career path\bigskip\normalsize
-%	\begin{center}
-%		\begin{tabular}{*{3}{m{.25\linewidth}<\centering}}
-%			Master Economics and Public Policy & %
-%			Master in Social Science \linebreak  Economics &
-%			PhD in Biostatistics \linebreak Statistical Computing 
-%			\\
-%			(UAI)  & (Caltech) & (USC)
-%		\end{tabular}
-%	\end{center}\bigskip
-%\end{frame}
-
 
 
 % ------------------------------------------------------------------------------
@@ -263,30 +249,6 @@
 	\end{minipage}
 \end{frame}
 
-%--------------------------------------------------------------------------------
-\begin{frame}
-	\frametitle{Computational features of \textbf{aphylo}}
-	\begin{minipage}[m]{.55\linewidth}
-		\vspace{-1cm}\raggedleft\includegraphics[width=.35\linewidth]{aphylo-logo.png}\\\vspace{-.5cm}
-		\raggedright
-		\small
-		\shadowbox{Baseline features}
-		\begin{itemize}
-			\item<2-> Parsimony: Conditional independence across functions/siblings.
-			\item<3-> Post-order Tree traversal: Linear complexity $O(|\mbox{tree}|)$.
-		\end{itemize}
-		\uncover<4->{\shadowbox{Additional features}}
-		\begin{itemize}
-			\item<5-> Reduced pruning sequence: Induced sub-tree of nodes connected to annotated leafs\\ $\implies$ Complexity $O(\left|\mbox{Induced sub-tree}\right|)\leq O(|\mbox{tree}|)$
-			\item<6-> Implemented in C++ (\textbf{pruner} library)
-		\end{itemize}
-	\end{minipage}\hfill
-	\begin{minipage}[m]{.44\linewidth}
-		\centering
-		\uncover<5->{\includegraphics[width=1\linewidth]{reduced-sequence.pdf}}
-	\end{minipage}
-\end{frame}
-
 % -------------------------------------------------------------------------------
 \begin{frame}[c,label=aphylo-results-brief]
 	\frametitle{Results: What does aphylo brings to the table?}
@@ -318,7 +280,9 @@
 			phylo-models\\
 			(0.72 vs 0.60 AUC)
 	\end{minipage}}
-	\vfill\hfill\hyperlink{aphylo-results-overview}{\beamergotobutton{details}}
+	\vfill\hfill %
+	\hyperlink{aphylo-comp-features}{\beamergotobutton{comp. feats}} %
+	\hyperlink{aphylo-results-overview}{\beamergotobutton{details}}
 \end{frame}
 
 % ------------------------------------------------------------------------------
@@ -372,11 +336,11 @@
 	\begin{minipage}[t]{.40\linewidth}
 		\centering
 		\shadowbox{Full Markov Transition Matrix}\\\bigskip
-		\uncover<2->{\includegraphics[width=.8\linewidth]{aphylo-ergm-eq1.png} \\
+		\uncover<1->{\includegraphics[width=.8\linewidth]{aphylo-ergm-eq1.png} \\
 			\vfill 
 		}
 	\end{minipage}\hfill
-	\uncover<3->{\begin{minipage}[t]{.50\linewidth}
+	\uncover<2->{\begin{minipage}[t]{.50\linewidth}
 	    \vfill
 	    \begin{itemize}
 	        \item<2-> 512 parameters
@@ -392,7 +356,7 @@
 
 % -------------------------------------------------------------------------------
 \begin{frame}[t]
-	\frametitle{Exponential Random Graph Models}
+	\frametitle{Exponential Random Graph Models (ERGMs)}
 	
     \byside{.45}{Social Network}{%
 	    \includegraphics[height=3cm]{fig/adjmat-network.png}
@@ -415,7 +379,7 @@
 
 % -------------------------------------------------------------------------------
 \begin{frame}[t]
-	\frametitle{Exponential Random Graph Models}
+	\frametitle{Exponential Random Graph Models (ERGMs)}
 	
 	\byside{.45}{Social Network}{%
 	    \includegraphics[height=3cm]{fig/adjmat-network.png}
@@ -451,7 +415,7 @@
 		\centering
 		\shadowbox{Sufficient statistics}\\\bigskip
 		\includegraphics[width=.8\linewidth]{aphylo-ergm-eq2.png} \\
-			\vfill 11 parameters
+			\vfill 11 parameters (for example)
 	\end{minipage}}
 	\vfill
 	\uncover<3->{\hfill\hfill\hyperlink{current-research}{\beamerreturnbutton{numeric example}}}
@@ -475,6 +439,7 @@
 		Longest branch gains & $(1-x_p^k)\isone{x_m^k : m=\mbox{argmax}_n\mbox{blength}_n}$ \\
 	\bottomrule
 	\end{tabular}
+	\caption{Example of sufficient statistics for evolutionary transitions.}
 	\end{table}
 \end{frame}
 
@@ -592,9 +557,25 @@ Repeated this experiment 5,000 times:
 	
 \end{frame}
 
+\begin{frame}
+\frametitle{What questions?}
+
+With this modeling framework, we could tackle, e.g.,
+
+\begin{itemize}
+    \item<2-> Potentially improve prediction accuracy.
+    \item<3-> Make inferences of the sort of:\\
+    \uncover<4->{"Function A or function B, which came first?"} \\
+    \uncover<5->{"When was subfunctionalization more likely to happen?"}\\
+    \uncover<6->{"Where functions A and B gained at the same time?"}
+    \item<7-> and much more...
+\end{itemize}
+    
+\end{frame}
+
 \begin{frame}[t]
 \frametitle{Take home}
-\byside{.33}{Goal}{
+\uncover<2->{\byside{.33}{Goal}{
     \centering %
     \vspace{.625cm}
     \includegraphics[height=.75cm]{aphylo-data-probability.pdf}
@@ -603,21 +584,22 @@ Repeated this experiment 5,000 times:
         \item We are in a race for uncovering \textbf{what genes do}.
         \item \textbf{Automatic algorithms} provide a way.
     \end{itemize}
-}\hfill
-\byside{.33}{Today}{
+}}\hfill
+\uncover<3->{\byside{.33}{Today}{
     \includegraphics[height=2cm]{fig/term-longest.png}
     \begin{itemize}
         \item Many alternatives... many unrealistic \textbf{assumptions}.
         \item \textbf{barry} (Sufficient Stats.): a general framework for gene function evolution.
     \end{itemize}
-}\hfill
-\byside{.33}{Future}{
+}}\hfill
+\uncover<4->{\byside{.33}{Next steps}{
 \includegraphics[height=2cm]{aphylo-data-2.png}
     \begin{itemize}
-        \item Further study properties of the model (bias/power/accuracy).
-        \item Start working on extensions.
+        \item Further study its properties (bias, power, accuracy).
+        \item<5-> Fit pooled data models.
+        \item<6-> Find applications for this \sout{model} \textbf{modeling framework}.
     \end{itemize}
-}
+}}
 \end{frame}
 
 
@@ -1047,6 +1029,31 @@ these are part of the same evolutionary tree!}
 		\includegraphics[width=.7\linewidth]{distribution-annotation-type.pdf}
 	\end{figure}
 	\vfill\hfill\hyperlink{phylo-table}{\beamerreturnbutton{go back}}
+\end{frame}
+
+%--------------------------------------------------------------------------------
+\begin{frame}[label=aphylo-comp-features]
+	\frametitle{Computational features of \textbf{aphylo}}
+	\begin{minipage}[m]{.55\linewidth}
+		\vspace{-1cm}\raggedleft\includegraphics[width=.35\linewidth]{aphylo-logo.png}\\\vspace{-.5cm}
+		\raggedright
+		\small
+		\shadowbox{Baseline features}
+		\begin{itemize}
+			\item<2-> Parsimony: Conditional independence across functions/siblings.
+			\item<3-> Post-order Tree traversal: Linear complexity $O(|\mbox{tree}|)$.
+		\end{itemize}
+		\uncover<4->{\shadowbox{Additional features}}
+		\begin{itemize}
+			\item<5-> Reduced pruning sequence: Induced sub-tree of nodes connected to annotated leafs\\ $\implies$ Complexity $O(\left|\mbox{Induced sub-tree}\right|)\leq O(|\mbox{tree}|)$
+			\item<6-> Implemented in C++ (\textbf{pruner} library)
+		\end{itemize}
+	\end{minipage}\hfill
+	\begin{minipage}[m]{.44\linewidth}
+		\centering
+		\uncover<5->{\includegraphics[width=1\linewidth]{reduced-sequence.pdf}}
+	\end{minipage}
+	\vfill\hfill\hyperlink{aphylo-results-brief}{\beamerreturnbutton{return}}
 \end{frame}
 
 \begin{frame}[label=aphylo-results-overview]
